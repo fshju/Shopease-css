@@ -1,0 +1,125 @@
+
+.contactContainer {
+    max-width: 100%;
+    padding: 0 1rem;
+    margin-top: 6rem;
+  }
+  
+  .contactHeading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .contactForm {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactForm h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+  }
+  
+  .contactForm p {
+    color: #6b6b6b;
+    margin-bottom: 1.5rem;
+  }
+  
+  .formInput {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4f46e5;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .submitButton:hover {
+    background-color: #4338ca;
+  }
+  
+  .contactDetails {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contactDetails h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+  }
+  
+  .contactDetails p {
+    color: #6b6b6b;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contactDetails ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .contactDetails li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .contactDetails li svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+  }
+  
+  .contactItem {
+    color: #4a4a4a;
+  }
+  
+  @media (min-width: 768px) {
+    .contactContainer {
+      padding: 0 2rem;
+    }
+  
+    .contactForm,
+    .contactDetails {
+      padding: 2rem;
+    }
+  
+    .submitButton {
+      padding: 1.2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .contactContainer {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .contactHeading {
+      font-size: 2.5rem;
+    }
+  }
+  

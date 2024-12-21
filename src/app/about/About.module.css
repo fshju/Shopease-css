@@ -1,0 +1,168 @@
+.hero {
+    background: linear-gradient(to right, #5a67d8, #6b46c1);
+    color: white;
+    padding: 5rem 0;
+  }
+  
+  .heroText {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .heroTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .heroDescription {
+    font-size: 1.25rem;
+  }
+  
+  
+  .whoWeAre {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .whoWeAreText {
+    font-size: 1.125rem;
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+  }
+  
+  .whoWeAreImage {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (min-width: 1024px) {
+    .whoWeAre {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Our Mission Section */
+  .mission {
+    background-color: #f7fafc;
+    padding: 4rem 0;
+  }
+  
+  .missionText {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .missionTextTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .missionTextDescription {
+    color: #4a5568;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+  
+  .missionCards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .missionCard {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .missionCardImage {
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .missionCardTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .missionCardText {
+    color: #4a5568;
+  }
+  
+  @media (min-width: 768px) {
+    .missionCards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .missionCards {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  
+  .joinJourney {
+    padding: 4rem 0;
+  }
+  
+  .joinJourneyCard {
+    background-color: #5a67d8;
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .joinJourneyTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .joinJourneyText {
+    margin-bottom: 2rem;
+  }
+  
+  .joinJourneyButton {
+    background-color: white;
+    color: #5a67d8;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .joinJourneyButton:hover {
+    background-color: #edf2f7;
+  }
+  
+  @media (min-width: 768px) {
+    .joinJourneyCard {
+      padding: 3rem;
+    }
+  
+    .joinJourneyTitle {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .joinJourneyCard {
+      padding: 4rem;
+    }
+  
+    .joinJourneyTitle {
+      font-size: 3rem;
+    }
+  }
+  

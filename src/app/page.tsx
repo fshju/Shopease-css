@@ -18,20 +18,16 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[600px] bg-gradient-to-r from-indigo-500 to-purple-600 pt-24">
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center">
-          <div className="text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Welcome to ShopEase
-            </h1>
-            <p className="text-xl md:text-2xl mb-8">
+      <section className="hero">
+        <div className="heroOverlay" />
+        <div className="heroContent">
+          <div>
+            <h1 className="heroTitle">Welcome to ShopEase</h1>
+            <p className="heroSubtitle">
               Discover amazing products at unbeatable prices
             </p>
             <Link href="/products">
-              <button className="bg-white text-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-                Shop Now
-              </button>
+              <button className="heroButton">Shop Now</button>
             </Link>
           </div>
         </div>
@@ -39,28 +35,21 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">
-          Featured Products
-        </h2>
+        <h2 className="featuredProductsTitle">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {featuredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
-            >
-              <div className="relative h-60 w-full">
-                {" "}
-                {/* Fixed height */}
+            <div key={product.id} className="featuredProductCard">
+              <div className="featuredProductImageContainer">
                 <Image
                   src={product.image}
                   alt={product.name}
                   layout="fill"
-                  style={{ objectFit: 'cover' }} 
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
-                <p className="text-gray-600">{product.price}</p>
+              <div className="featuredProductInfo">
+                <h3 className="featuredProductName">{product.name}</h3>
+                <p className="featuredProductPrice">{product.price}</p>
               </div>
             </div>
           ))}
@@ -68,27 +57,20 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="bg-gray-100 py-16">
+      <section className="categorySection">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">
-            Shop by Category
-          </h2>
+          <h2 className="categorySectionTitle">Shop by Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.map((category) => (
-              <div
-                key={category.name}
-                className="relative h-40 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-              >
+              <div key={category.name} className="categoryCard">
                 <Image
                   src={category.image}
                   alt={category.name}
                   layout="fill"
-                  style={{ objectFit: 'cover' }} 
+                  style={{ objectFit: 'cover' }}
                 />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <h3 className="text-xl font-semibold text-white">
-                    {category.name}
-                  </h3>
+                <div className="categoryImageOverlay">
+                  <h3 className="categoryCardText">{category.name}</h3>
                 </div>
               </div>
             ))}

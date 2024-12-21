@@ -1,21 +1,68 @@
+"use client";
+import React, { useState } from "react";
+import styles from "./Contact.module.css"; 
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<{
+    name: string;
+    email: string;
+    message: string;
+  }>({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Basic validation
+    const newErrors = {
+      name: formData.name ? "" : "Name is required.",
+      email: /\S+@\S+\.\S+/.test(formData.email)
+        ? ""
+        : "Please enter a valid email.",
+      message: formData.message ? "" : "Message cannot be empty.",
+    };
+
+    setErrors(newErrors);
+
+   
+    if (!newErrors.name && !newErrors.email && !newErrors.message) {
+      console.log("Form submitted successfully:", formData);
+    
+      setFormData({ name: "", email: "", message: "" });
+    }
+  };
+
   return (
-    <div>
-      <section className="max-w-7xl mx-auto px-4 py-12 pt-24 sm:py-24">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center">
-          Contact Us
-        </h1>
+    <div className={styles.contactContainer}>
+      <section>
+        <h1 className={styles.contactHeading}>Contact Us</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Send us a message
-            </h2>
-            <p className="text-gray-600 mb-6">
+          <div className={styles.contactForm}>
+            <h2>Send us a message</h2>
+            <p>
               Have any questions? We did love to hear from you. Fill out the form
               below, and we will get back to you as soon as possible.
             </p>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="name"
@@ -26,10 +73,15 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 border rounded-lg text-gray-700 focus:ring focus:ring-indigo-200"
+                  className={styles.formInput}
                   placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                 />
+                {errors.name && (
+                  <p className="text-red-600 text-sm">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label
@@ -41,10 +93,15 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 border rounded-lg text-gray-700 focus:ring focus:ring-indigo-200"
+                  className={styles.formInput}
                   placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                 />
+                {errors.email && (
+                  <p className="text-red-600 text-sm">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label
@@ -55,94 +112,34 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
-                  className="w-full px-4 py-3 border rounded-lg text-gray-700 focus:ring focus:ring-indigo-200"
+                  className={styles.formInput}
                   rows={5}
                   placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                 ></textarea>
+                {errors.message && (
+                  <p className="text-red-600 text-sm">{errors.message}</p>
+                )}
               </div>
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
-              >
+              <button type="submit" className={styles.submitButton}>
                 Submit
               </button>
             </form>
           </div>
 
           {/* Contact Details */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Our Contact Details
-            </h2>
-            <p className="text-gray-600 mb-4">
+          <div className={styles.contactDetails}>
+            <h2>Our Contact Details</h2>
+            <p>
               Feel free to reach out to us through any of the following
               channels.
             </p>
             <ul className="space-y-4">
-              <li className="flex items-center space-x-4">
-                <span className="bg-indigo-600 text-white p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16.72 12.57a4.5 4.5 0 01-6.36 0L3.05 8.04a2.252 2.252 0 00-3.04.8v6.32a2.25 2.25 0 001.75 2.15l4.53 1.23a9.74 9.74 0 009.2-2.46l5.65 5.66a2.25 2.25 0 003.18 0 2.25 2.25 0 000-3.18l-5.65-5.66a9.74 9.74 0 00-2.46-9.2l-1.23-4.53A2.25 2.25 0 0014.4 0H8.08a2.252 2.252 0 00-2.03 2.78l1.23 4.53a9.74 9.74 0 002.46 9.2l5.66-5.65a2.25 2.25 0 013.18 0 2.25 2.25 0 010 3.18l-5.66 5.65a9.74 9.74 0 009.2-2.46l4.53-1.23a2.252 2.252 0 002.78-2.03v-6.32a2.25 2.25 0 00-.8-3.04l-4.53 1.23a9.74 9.74 0 00-9.2 2.46l-5.65-5.66a2.25 2.25 0 00-3.18 0 2.25 2.25 0 000 3.18l5.65 5.66a9.74 9.74 0 009.2-2.46z"
-                    />
-                  </svg>
-                </span>
-                <span className="text-gray-700 font-medium">
-                  Phone: +1 (123) 456-7890
-                </span>
-              </li>
-              <li className="flex items-center space-x-4">
-                <span className="bg-indigo-600 text-white p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8h2a2 2 0 012 2v6a2 2 0 01-2 2H3a2 2 0 01-2-2v-6a2 2 0 012-2zM21 8h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2v-6a2 2 0 00-2-2z"
-                    />
-                  </svg>
-                </span>
-                <span className="text-gray-700 font-medium">
-                  Email: support@shopease.com
-                </span>
-              </li>
-              <li className="flex items-center space-x-4">
-                <span className="bg-indigo-600 text-white p-2 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 22.428c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zM12 14v-2m0 0V8m0 4h-4m4 0h4"
-                    />
-                  </svg>
-                </span>
-                <span className="text-gray-700 font-medium">
-                  Address: 123 ShopEase Ave, Cityville, USA
-                </span>
-              </li>
+              <p>Phone: +1 (123) 456-7890 </p>
+              <p>Email: support@shopease.com </p>
+              <p>Address: 123 ShopEase Ave, Cityville, USA </p>
             </ul>
           </div>
         </div>
